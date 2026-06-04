@@ -137,13 +137,81 @@
 
 ## 11. Branchable Directions
 
-| # | Direction | Files Involved | Prerequisites | Complexity |
-|---|-----------|---------------|---------------|------------|
-| A | `<direction-1>` | `<files>` | `<prereqs>` | Low/Med/High |
-| B | `<direction-2>` | `<files>` | `<prereqs>` | Low/Med/High |
+| # | Direction | Type | Files Involved | Prerequisites | Complexity |
+|---|-----------|------|---------------|---------------|------------|
+| A | `<direction-1>` | Research / Engineering / Ops | `<files>` | `<prereqs>` | Low/Med/High |
+| B | `<direction-2>` | Research / Engineering / Ops | `<files>` | `<prereqs>` | Low/Med/High |
 
 ---
 
 ## 12. Startup Prompt for New Session
 
 (Generated from `references/startup-prompts.md` based on target IDE)
+
+---
+
+## 13. IDE-Specific Context (Optional — fill based on target IDE)
+
+### For WorkBuddy
+
+#### Identity Files
+| File | Path | Description |
+|------|------|-------------|
+| SOUL.md | `~/.workbuddy/SOUL.md` | Persona definition |
+| IDENTITY.md | `~/.workbuddy/IDENTITY.md` | Identity configuration |
+| USER.md | `~/.workbuddy/USER.md` | User profile |
+
+#### Memory System
+| File | Path | Description |
+|------|------|-------------|
+| Project memory | `.workbuddy/memory/MEMORY.md` | Project-level memory |
+| Daily logs | `.workbuddy/memory/YYYY-MM-DD.md` | Daily session logs |
+| Global memory | `~/.workbuddy/MEMORY.md` | User global memory |
+
+#### Installed Skills
+| Skill | Version | Status |
+|-------|---------|--------|
+| `<skill-1>` | `<version>` | Active |
+| `<skill-2>` | `<version>` | Active |
+
+#### Scheduled Tasks (Automations)
+| Task | Cron | Status | Description |
+|------|------|--------|-------------|
+| `<task-1>` | `<cron>` | Active/Paused | `<description>` |
+
+#### Channel Configuration
+| Channel | Config | Status |
+|---------|--------|--------|
+| IMA knowledge base | `<kb-id>` | Configured / Needs setup |
+| Feishu channel | `<channel-config>` | Configured / Needs setup |
+
+#### MCP Connectors
+| Connector | Status |
+|-----------|--------|
+| `<connector-1>` | Connected / Disconnected |
+
+### For TRAE SOLO
+
+#### Rules
+| File | Path | Description |
+|------|------|-------------|
+| Project rules | `.trae/rules/` | Auto-loaded project rules |
+
+#### Scheduled Tasks
+| Task | Cron | Status |
+|------|------|--------|
+| `<task-1>` | `<cron>` | Active/Paused |
+
+### For Cursor
+
+#### Rules
+| File | Path | Description |
+|------|------|-------------|
+| Project rules | `.cursor/rules/` or `.cursorrules` | Auto-loaded project rules |
+
+### For Claude Code
+
+#### Rules
+| File | Path | Description |
+|------|------|-------------|
+| Project rules | `CLAUDE.md` | Project-level instructions |
