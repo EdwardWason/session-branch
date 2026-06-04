@@ -1,6 +1,6 @@
 # Session Branch — 会话分叉
 
-[![版本](https://img.shields.io/badge/版本-1.0.0-blue)](https://github.com/EdwardWason/session-branch)
+[![版本](https://img.shields.io/badge/版本-1.1.0-blue)](https://github.com/EdwardWason/session-branch)
 [![许可证](https://img.shields.io/badge/许可证-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-session--branch-orange)](https://clawhub.ai/skills/session-branch)
 
@@ -18,6 +18,7 @@
 - **三步启动流程** — 加载 → 汇报 → 问询，新 AI 先理解再行动
 - **个人信息自动过滤** — 自动剥离真实姓名、路径、token 和密钥
 - **可接续方向枚举** — 列出下一步可做什么，含前置条件和复杂度评估
+- **WorkBuddy 深度适配** — 身份文件体系（SOUL.md/IDENTITY.md/USER.md）、记忆体系、技能列表、定时任务、IMA/飞书通道、MCP 连接器
 
 ## 快速开始
 
@@ -74,7 +75,7 @@ MIT-0
 
 # Session Branch
 
-[![version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/EdwardWason/session-branch)
+[![version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/EdwardWason/session-branch)
 [![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-session--branch-orange)](https://clawhub.ai/skills/session-branch)
 
@@ -92,6 +93,7 @@ When a coding conversation gets long, LLM context compression degrades quality. 
 - **Three-Step Startup Flow** — Load → Report → Ask, so the new AI understands before acting
 - **Personal Info Auto-Filter** — Strips real names, paths, tokens, and secrets from handoff docs
 - **Branchable Directions** — Enumerates what can be built next with prerequisites and complexity
+- **WorkBuddy Deep Adaptation** — Identity files (SOUL.md/IDENTITY.md/USER.md), memory system, skill list, scheduled tasks, IMA/Feishu channels, MCP connectors
 
 ## Quick Start
 
