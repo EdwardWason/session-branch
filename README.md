@@ -1,4 +1,4 @@
-# Session Branch — 会话分叉
+# Session Branch — 支线任务
 
 [![版本](https://img.shields.io/badge/版本-1.1.0-blue)](https://github.com/EdwardWason/session-branch)
 [![许可证](https://img.shields.io/badge/许可证-MIT--0-green)](LICENSE)
@@ -32,7 +32,7 @@ clawhub install session-branch
 
 在当前对话中说：
 
-- "开个支线" / "分叉" / "branch" / "新任务但保留上下文"
+- "开个支线" / "分叉" / "branch" / "新任务但保留上下文" / "开启新任务"
 
 Skill 将：
 1. 分析当前会话和项目
