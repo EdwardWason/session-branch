@@ -1,7 +1,7 @@
 {
   "name": "session-branch",
   "description": "Branch a coding session into a new conversation with full context handoff — generate structured handoff doc, startup prompts, and guide the new session to pick up exactly where you left off.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": { "name": "session-branch contributors" },
   "homepage": "https://github.com/EdwardWason/session-branch",
   "repository": "https://github.com/EdwardWason/session-branch",
