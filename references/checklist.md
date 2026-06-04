@@ -58,6 +58,7 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Each direction lists files involved
 - [ ] Prerequisites for each direction
 - [ ] Complexity estimate (Low / Medium / High)
+- [ ] Direction type tagged (Research / Engineering / Ops)
 
 ## K. Pending Items
 - [ ] Unfinished tasks
@@ -68,7 +69,33 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Three-step flow: Load → Report → Ask
 - [ ] Adapted for target IDE platform
 - [ ] Role set: "continuation of existing project, not starting from scratch"
-- [ ] Exact file paths included (absolute paths)
+- [ ] Exact file paths included (absolute or relative per IDE)
+
+---
+
+## M. IDE-Specific Checks (fill based on target IDE)
+
+### For WorkBuddy
+- [ ] Identity files indexed (SOUL.md, IDENTITY.md, USER.md)
+- [ ] Memory system indexed (MEMORY.md, daily logs)
+- [ ] Installed skills listed
+- [ ] Scheduled tasks (automations) listed with status
+- [ ] Channel configuration (IMA, Feishu) documented
+- [ ] MCP connector status documented
+- [ ] Handoff saved to `.workbuddy/session-handoff.md` (not `docs/`)
+
+### For TRAE SOLO
+- [ ] `.trae/rules/` indexed
+- [ ] Schedule tasks listed
+- [ ] Handoff saved to `docs/session-handoff.md`
+
+### For Cursor
+- [ ] `.cursor/rules/` or `.cursorrules` indexed
+- [ ] Handoff saved to `docs/session-handoff.md`
+
+### For Claude Code
+- [ ] `CLAUDE.md` indexed
+- [ ] Handoff saved to `docs/session-handoff.md`
 
 ---
 
