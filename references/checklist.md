@@ -9,7 +9,7 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Project name and one-line description
 - [ ] Platform URLs (GitHub, ClawHub, npm, PyPI, etc.)
 - [ ] Current version number
-- [ ] Project directory absolute path
+- [ ] Project directory relative path (never absolute)
 - [ ] Tech stack
 - [ ] License
 
@@ -39,9 +39,10 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Other platforms (npm, PyPI, Docker Hub, etc.)
 
 ## G. Environment Variables
-- [ ] Which env vars are configured
+- [ ] Which env var names are configured (yes/no status only)
 - [ ] Which need user configuration
 - [ ] Token types and required permissions
+- [ ] No env var values recorded anywhere in the document
 
 ## H. Knowledge File Index
 - [ ] Indexed by scenario (not by filename)
@@ -69,7 +70,7 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Three-step flow: Load → Report → Ask
 - [ ] Adapted for target IDE platform
 - [ ] Role set: "continuation of existing project, not starting from scratch"
-- [ ] Exact file paths included (absolute or relative per IDE)
+- [ ] Project-relative file paths included (never absolute paths with usernames)
 
 ---
 
@@ -107,6 +108,8 @@ Before finalizing the handoff, scan and remove:
 - [ ] No real email addresses
 - [ ] No absolute paths containing usernames (use `<project-dir>`)
 - [ ] No token values (use `<your-token>`)
+- [ ] No env var values (only variable names + configured status)
 - [ ] No internal network addresses or VPN endpoints
 - [ ] No project-specific secrets or API keys
 - [ ] No personal preferences that are project-specific (keep generic patterns)
+- [ ] IDE-specific file scanning was performed with explicit user consent

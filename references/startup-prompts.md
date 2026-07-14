@@ -10,9 +10,9 @@ Templates for the new conversation's opening prompt, adapted per IDE.
 This is a continuation of an existing project. Follow these steps:
 
 Step 1: Load context
-1. Read `<project-dir>/docs/session-handoff.md` (project handoff document)
-2. Read `<project-dir>/docs/rules/coding-standards.md` (coding standards)
-3. Read `<project-dir>/docs/rules/processes.md` (process rules)
+1. Read `docs/session-handoff.md` in the project root (project handoff document)
+2. Read `docs/rules/coding-standards.md` (coding standards, if exists)
+3. Read `docs/rules/processes.md` (process rules, if exists)
 
 Step 2: Report to me
 - What files you read and what you learned about the project
@@ -26,11 +26,12 @@ Step 3: Ask me
 My task is: <TASK_DESCRIPTION>
 ```
 
+
 ---
 
 ## TRAE SOLO
 
-Same as Universal Template. TRAE SOLO supports absolute paths natively.
+Same as Universal Template. Use project-relative paths only.
 
 Additional notes:
 - Rules in `.trae/rules/` are auto-loaded — no need to mention them in the prompt
@@ -72,7 +73,7 @@ Additional notes:
 
 ## Cursor
 
-Same as Universal Template. Cursor supports absolute paths.
+Same as Universal Template. Use project-relative paths.
 
 Additional notes:
 - Cursor's `.cursor/rules/` is auto-loaded — equivalent to TRAE's `.trae/rules/`

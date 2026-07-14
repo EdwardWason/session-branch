@@ -15,7 +15,7 @@
 | GitHub | `https://github.com/<owner>/<repo>` |
 | ClawHub slug | `<slug>` (if applicable) |
 | Current version | `<X.Y.Z>` |
-| Project directory | `<absolute-path-to-project>` |
+| Project directory | `<project-dir>` (relative path only) |
 | Tech stack | `<language> / <framework> / <tools>` |
 | License | `<license-type>` |
 
@@ -99,6 +99,8 @@
 
 ## 7. Environment Variables
 
+> **Never record env var values.** Only list variable names and whether they are configured.
+
 | Variable | Purpose | Status |
 |----------|---------|--------|
 | `<VAR_1>` | `<purpose>` | Configured / Needs user config |
@@ -151,6 +153,8 @@
 ---
 
 ## 13. IDE-Specific Context (Optional — fill based on target IDE)
+
+> **Consent required**: Only fill this section after obtaining explicit user consent to scan these files.
 
 ### For WorkBuddy
 
