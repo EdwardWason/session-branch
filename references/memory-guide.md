@@ -33,9 +33,9 @@
 
 **Contents**: User preferences, communication language, code style, tech stack, workflows, constraints.
 
-**When to read**: Always read at session start. This file is global — it applies to all projects.
+**When to read**: Read at session start **only with explicit user consent** (skip if declined). This file is global — it applies to all projects.
 
-**How TRAE uses it**: Auto-injected via `<memory_item type="user_profile">` in system reminders. But the new session should also read it explicitly for completeness.
+**How TRAE uses it**: Auto-injected via `<memory_item type="user_profile">` in system reminders. The new session can rely on auto-injection; explicit file reads require user opt-in.
 
 ### 2. Project-Level Memory (Shared Within Project)
 
@@ -43,11 +43,11 @@
 
 **Contents**: Project-specific engineering conventions, hard constraints, lessons learned.
 
-**When to read**: Always read at session start for the current project.
+**When to read**: Read at session start **only with explicit user consent** for the current project.
 
 **How TRAE uses it**: Auto-injected via `<memory_item type="project_memory">` in system reminders.
 
-**Project key encoding**: The `<project-key>` is the project path with special characters replaced. Example: `c:\Users\Administrator\Documents\trae_projects` becomes `-c-Users-Administrator-Documents-trae-projects`.
+**Project key encoding**: The `<project-key>` is the project path with special characters replaced. Example: `c:\Users\<your-username>\Documents\<project-name>` becomes `-c-Users-<your-username>-Documents-<project-name>` (special chars replaced with hyphens).
 
 ### 3. Topic-Level Memory (Recent Sessions)
 
@@ -61,7 +61,7 @@
 User requested extracting and transcribing content from...
 ```
 
-**When to read**: Read the last 2 days of `topics.md` files for recent context.
+**When to read**: Read the last 2 days of `topics.md` files for recent context **only with explicit user consent**.
 
 ### 4. Message-Level Memory (Granular, Per-Session)
 
@@ -79,10 +79,12 @@ User requested extracting and transcribing content from...
 
 When the new session's agent receives the startup prompt, it should:
 
-1. **Read user_profile.md** — understand user preferences (language, code style, constraints)
-2. **Read project_memory.md** — understand project conventions and lessons learned
-3. **Read recent topics.md** — scan last 2 days for relevant session topics
-4. **Grep session_memory files** — search by keywords from the handoff doc if deeper context is needed
+1. **Ask the user for explicit consent** before reading any memory files — explain that memory files may contain personal preferences and project-internal information
+2. **If consent is granted**, read `user_profile.md` — understand user preferences (language, code style, constraints)
+3. **If consent is granted**, read `project_memory.md` — understand project conventions and lessons learned
+4. **If consent is granted**, read recent `topics.md` — scan last 2 days for relevant session topics
+5. **If consent is granted**, grep `session_memory` files — search by keywords from the handoff doc if deeper context is needed
+6. **If consent is declined**, rely on TRAE's auto-injected `<memory_item>` tags and the handoff doc only — do NOT silently read memory files
 
 ### Example Grep Search
 

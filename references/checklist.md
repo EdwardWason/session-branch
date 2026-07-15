@@ -28,7 +28,10 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Key decisions documented (chosen vs rejected + reason)
 
 ## F. All User Messages (P0, ~800 tokens)
-- [ ] All user messages preserved as original text
+- [ ] All user messages preserved as original text **with mandatory sanitization**
+- [ ] Credentials, tokens, API keys, passwords replaced with `<REDACTED_CREDENTIAL>`
+- [ ] Real names, emails, phone numbers replaced with `<REDACTED_PII>`
+- [ ] Absolute paths with usernames converted to project-relative paths
 - [ ] Messages >500 chars truncated with "..."
 
 ## G. Conversation Language (P3, ~10 tokens)
@@ -67,7 +70,8 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Priority annotated (Must-read / On-demand)
 
 ### N. User Preferences
-- [ ] Language, work style, code style, security sensitivity
+- [ ] Preferred language, code style, workflow preferences recorded
+- [ ] Only preferences affecting code generation recorded (no personal attributes, no security sensitivity)
 
 ---
 
@@ -76,7 +80,9 @@ If an item is not applicable, write "N/A" with a reason.
 - [ ] Adapted for target IDE platform
 - [ ] Role set: "continuation of existing project, not starting from scratch"
 - [ ] Project-relative file paths (never absolute with usernames)
-- [ ] For TRAE SOLO: includes memory system read instructions (4 layers)
+- [ ] For TRAE SOLO: memory system reads are OPT-IN with explicit consent prompt
+- [ ] For WorkBuddy: identity/memory file reads are OPT-IN with explicit consent prompt
+- [ ] Memory context reporting limited to project conventions + recent topics (no detailed personal preferences)
 
 ---
 
@@ -84,6 +90,7 @@ If an item is not applicable, write "N/A" with a reason.
 
 ### For TRAE SOLO
 - [ ] Memory system reference included (user_profile, project_memory, recent topics)
+- [ ] Explicit user consent obtained before reading any memory files
 - [ ] `.trae/rules/` indexed
 - [ ] Schedule tasks listed
 - [ ] Handoff saved to `docs/session-handoff.md`
@@ -91,6 +98,7 @@ If an item is not applicable, write "N/A" with a reason.
 ### For WorkBuddy
 - [ ] Identity files indexed (SOUL.md, IDENTITY.md, USER.md)
 - [ ] Memory system indexed (MEMORY.md, daily logs)
+- [ ] Explicit user consent obtained before reading identity/memory files
 - [ ] Installed skills listed
 - [ ] Scheduled tasks (automations) listed with status
 - [ ] MCP connector status documented

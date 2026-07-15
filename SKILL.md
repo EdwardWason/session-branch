@@ -1,7 +1,7 @@
 ---
 name: "session-branch"
-description: "Branch a coding session into a new conversation with full context handoff — generate structured handoff doc and startup prompts. Do NOT use for new projects, general coding, or non-handoff session management."
-version: "1.3.0"
+description: "Branch a coding session into a new conversation with full context handoff — generate structured handoff doc and startup prompts. Triggers ONLY on '支线任务' / '开个支线' / '分叉'. Do NOT use for new projects, general coding, or non-handoff session management."
+version: "1.4.0"
 slug: "session-branch"
 displayName: "Session Branch"
 summary: "将当前编码会话分叉到新对话，完整保留上下文。自动生成结构化交接文档和启动提示词。"
@@ -40,7 +40,7 @@ Scan the current conversation and project to extract:
 3. **Files and code sections** — all Read/Edit/Write operations, with change summaries and key snippets
 4. **Errors and fixes** — recent 5-10 errors with root cause and solution
 5. **Problem solving** — completed achievements + key decision chain (chosen vs rejected + why)
-6. **All user messages** — original text preserved, truncate >500 chars with "..."
+6. **All user messages** — original text preserved **with sanitization** (strip credentials/PII), truncate >500 chars with "..."
 7. **Conversation language** — detected primary language
 8. **Current work** — active task, unfinished Todos with status, branchable directions
 
@@ -58,7 +58,7 @@ Scan the current conversation and project to extract:
 - **Channel config**: IMA knowledge base IDs, Feishu channel configuration
 - **MCP connectors**: active MCP connector status
 
-**For TRAE SOLO**, also scan:
+**For TRAE SOLO**, also scan (with user consent):
 - **Rules**: `.trae/rules/` — project-level rules
 - **Schedule**: TRAE SOLO Schedule task list
 - **Memory system**: `~/.trae-cn/memory/` — user profile, project memory, recent topics (see `references/memory-guide.md` for path structure)
@@ -82,15 +82,15 @@ Scan the current conversation and project to extract:
 | 3 | Files and Code Sections | P1 | ~1200 | Paths + changes + snippets (max 500 chars each) |
 | 4 | Errors and Fixes | P1 | ~600 | Recent 5-10 only, description + cause + fix |
 | 5 | Problem Solving | P2 | ~300 | Completed achievements + decision chain |
-| 6 | All User Messages | P0 | ~800 | Original text, truncate >500 chars with "..." |
+| 6 | All User Messages | P0 | ~800 | Original text **with sanitization** (strip credentials/PII), truncate >500 chars with "..." |
 | 7 | Conversation Language | P3 | ~10 | Single field |
-| 8 | Current Work | P0 | ~600 | Active task + unfinished Todos + branchable directions |
+| 8 | Current Work | P0 | ~600 | Active task + unfinished Todos + branchable directions **with sanitization** (no personal paths) |
 
 **Compression priority**: When content exceeds budget, compress in reverse priority order (P3 first, P0 last):
 - **P3** (can discard): Conversation Language is just one word
 - **P2** (summary only): Compress to keyword lists
 - **P1** (keep recent): Only recent 5-10 errors, only key code snippets
-- **P0** (preserve at all costs): All user messages and current work status
+- **P0** (preserve **with mandatory sanitization**): All user messages and current work status — strip credentials, tokens, real names, emails, and personal identifiers before preserving; replace with `<REDACTED>` placeholders
 
 **Supplementary sections** (not budgeted): Project identity, platform status, env vars, capability boundary, knowledge index, user preferences, IDE-specific context (with consent).
 
@@ -142,7 +142,7 @@ Show the user:
 | Capability | Used | Description |
 |------------|------|-------------|
 | Network | No | No network access required |
-| File read/write | Yes | Reads project files; writes `docs/session-handoff.md` (overwrites if exists) |
+| File read/write | Yes | Reads project files; writes `docs/session-handoff.md` (overwrites if exists). Reads IDE memory/identity files (e.g., `~/.trae-cn/memory/`, `~/.workbuddy/SOUL.md`) **ONLY with explicit user consent** — opt-in, never silent reads |
 | Environment variables | Yes | Reads env var names (status only, never values) |
 | subprocess | No | No subprocess calls |
 | External API | No | No external API calls |

@@ -9,11 +9,13 @@
 ## Token Budget Allocation
 
 > Total target: ~4000 tokens. Use the priority table below to compress when content exceeds budget.
+>
+> **Sanitization applies to ALL sections (including P0)**: Before preserving any user content, strip credentials, tokens, API keys, real names, emails, phone numbers, and personal identifiers. Replace with `<REDACTED>` placeholders. Preservation priority never overrides sanitization — sensitive content is always redacted, even in P0 sections.
 
 | Priority | Section | Token Budget | Compression Rule |
 |----------|---------|-------------|-----------------|
-| **P0** | All User Messages | ~800 | Preserve original text; truncate messages >500 chars with "..." |
-| **P0** | Current Work | ~600 | Detailed description of current task state + unfinished Todos |
+| **P0** | All User Messages | ~800 | Preserve original text **with sanitization** (strip credentials/PII, replace with `<REDACTED>`); truncate messages >500 chars with "..." |
+| **P0** | Current Work | ~600 | Detailed description of current task state + unfinished Todos **with sanitization** (no token values, no personal paths) |
 | **P1** | Files and Code Sections | ~1200 | File paths + modification summary + key code snippets (max 500 chars each) |
 | **P1** | Errors and Fixes | ~600 | Error description + solution; keep only recent 5-10 items |
 | **P2** | Primary Request and Intent | ~300 | Numbered list, deduplicated |
@@ -92,11 +94,17 @@
 
 ## 6. All User Messages
 
-> P0 priority | ~800 tokens | Preserve original text. Truncate messages >500 chars with "..."
+> P0 priority | ~800 tokens | Preserve original text **with mandatory sanitization**. Truncate messages >500 chars with "..."
 
-1. `<user-message-1>`
-2. `<user-message-2>`
-3. `<user-message-3>`
+**Sanitization checklist (apply to each message before preserving):**
+- Replace credentials, tokens, API keys, passwords → `<REDACTED_CREDENTIAL>`
+- Replace real names, emails, phone numbers → `<REDACTED_PII>`
+- Replace absolute paths containing usernames → project-relative paths
+- Replace personal identifiers in URLs → `<REDACTED_URL>`
+
+1. `<sanitized-user-message-1>`
+2. `<sanitized-user-message-2>`
+3. `<sanitized-user-message-3>`
 4. "..."
 
 ---
@@ -176,12 +184,13 @@
 
 ### User Preferences
 
+> Record ONLY preferences that directly affect code generation. Do NOT record personal attributes, security sensitivity levels, or any field not listed below.
+
 | Preference | Value |
 |-----------|-------|
-| Language | `<language>` |
-| Work style | `<style>` |
+| Preferred language | `<language>` |
 | Code style | `<style>` |
-| Security sensitivity | `<level>` |
+| Workflow preferences | `<style>` |
 
 ---
 
