@@ -1,7 +1,7 @@
 ---
 name: "session-branch"
 description: "Branch a coding session into a new conversation with full context handoff — generate structured handoff doc and startup prompts. Do NOT use for new projects, general coding, or non-handoff session management."
-version: "1.2.0"
+version: "1.3.0"
 slug: "session-branch"
 displayName: "Session Branch"
 summary: "将当前编码会话分叉到新对话，完整保留上下文。自动生成结构化交接文档和启动提示词。"
@@ -35,16 +35,16 @@ Branch your current coding session into a new conversation without losing contex
 
 Scan the current conversation and project to extract:
 
-1. **Project identity** — name, description, platforms, version, tech stack
-2. **Decision chain** — what was chosen, what was rejected, and why
-3. **Data flow** — how data moves through the system (input → process → output)
-4. **Capability boundary** — what the project CAN do and CANNOT do
-5. **Code changes** — what files were modified in this session and why
-6. **Platform status** — GitHub, ClawHub, npm, PyPI current state
-7. **Environment** — which env var names are configured (yes/no status only, never harvest values)
-8. **Knowledge files** — index of docs/knowledge/ and docs/rules/ by scenario
-9. **User preferences** — language, work style, code style, security sensitivity
-10. **Branchable directions** — what can be built next, with files involved and prerequisites
+1. **Primary request and intent** — all user intents, deduplicated, numbered chronologically
+2. **Key technical concepts** — keywords, categorized (Architecture / Tools / Patterns)
+3. **Files and code sections** — all Read/Edit/Write operations, with change summaries and key snippets
+4. **Errors and fixes** — recent 5-10 errors with root cause and solution
+5. **Problem solving** — completed achievements + key decision chain (chosen vs rejected + why)
+6. **All user messages** — original text preserved, truncate >500 chars with "..."
+7. **Conversation language** — detected primary language
+8. **Current work** — active task, unfinished Todos with status, branchable directions
+
+**Supplementary context** (not token-budgeted): project identity, platform status, env var names (status only), capability boundary, knowledge file index, user preferences.
 
 #### IDE-Specific Additional Scanning
 
@@ -61,12 +61,38 @@ Scan the current conversation and project to extract:
 **For TRAE SOLO**, also scan:
 - **Rules**: `.trae/rules/` — project-level rules
 - **Schedule**: TRAE SOLO Schedule task list
+- **Memory system**: `~/.trae-cn/memory/` — user profile, project memory, recent topics (see `references/memory-guide.md` for path structure)
 
 **For Cursor**, also scan:
 - **Rules**: `.cursor/rules/` or `.cursorrules`
 
 **For Claude Code**, also scan:
 - **Rules**: `CLAUDE.md` in project root
+
+### Step 1.5: Apply Compression Strategy
+
+> Based on Trae IDE session-copy architecture. The handoff doc uses an 8-section fixed structure with token budget management.
+
+**8 Core Sections** (token budget ~4000 total):
+
+| # | Section | Priority | Budget | Rule |
+|---|---------|----------|--------|------|
+| 1 | Primary Request and Intent | P2 | ~300 | Numbered list, deduplicated |
+| 2 | Key Technical Concepts | P2 | ~200 | Keyword list, categorized |
+| 3 | Files and Code Sections | P1 | ~1200 | Paths + changes + snippets (max 500 chars each) |
+| 4 | Errors and Fixes | P1 | ~600 | Recent 5-10 only, description + cause + fix |
+| 5 | Problem Solving | P2 | ~300 | Completed achievements + decision chain |
+| 6 | All User Messages | P0 | ~800 | Original text, truncate >500 chars with "..." |
+| 7 | Conversation Language | P3 | ~10 | Single field |
+| 8 | Current Work | P0 | ~600 | Active task + unfinished Todos + branchable directions |
+
+**Compression priority**: When content exceeds budget, compress in reverse priority order (P3 first, P0 last):
+- **P3** (can discard): Conversation Language is just one word
+- **P2** (summary only): Compress to keyword lists
+- **P1** (keep recent): Only recent 5-10 errors, only key code snippets
+- **P0** (preserve at all costs): All user messages and current work status
+
+**Supplementary sections** (not budgeted): Project identity, platform status, env vars, capability boundary, knowledge index, user preferences, IDE-specific context (with consent).
 
 ### Step 2: Generate Handoff Document
 
@@ -131,6 +157,7 @@ Show the user:
 
 ## References
 
-- `references/handoff-template.md` — Full template for the handoff document
-- `references/checklist.md` — Validation checklist (12 categories + IDE-specific)
-- `references/startup-prompts.md` — IDE-specific startup prompt templates
+- `references/handoff-template.md` — Full template for the handoff document (8 sections + supplementary context)
+- `references/checklist.md` — Validation checklist (8 core sections + supplementary + IDE-specific)
+- `references/startup-prompts.md` — IDE-specific startup prompt templates (5 IDEs with memory integration)
+- `references/memory-guide.md` — TRAE memory system reference (3 layers + quick lookup guide)

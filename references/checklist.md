@@ -5,90 +5,96 @@ If an item is not applicable, write "N/A" with a reason.
 
 ---
 
-## A. Project Identity
-- [ ] Project name and one-line description
-- [ ] Platform URLs (GitHub, ClawHub, npm, PyPI, etc.)
-- [ ] Current version number
-- [ ] Project directory relative path (never absolute)
-- [ ] Tech stack
-- [ ] License
+## A. Primary Request and Intent (P2, ~300 tokens)
+- [ ] All user intents extracted from user messages
+- [ ] Deduplicated and numbered in chronological order
 
-## B. Decision Chain
-- [ ] Each key technical decision: what was chosen, what was rejected, why
-- [ ] Naming strategy (cross-platform slug mapping if applicable)
-- [ ] Architecture choices with rationale
+## B. Key Technical Concepts (P2, ~200 tokens)
+- [ ] Technical keywords extracted and deduplicated
+- [ ] Categorized (Architecture / Tools / Patterns)
 
-## C. Data Flow & Execution Pipeline
-- [ ] End-to-end execution flow diagram
-- [ ] Data format flow (input → processing → output)
-- [ ] Trigger modes (Interactive / Cron / Manual)
+## C. Files and Code Sections (P1, ~1200 tokens)
+- [ ] All Read/Edit/Write file operations recorded
+- [ ] Each file: path + importance + change summary + key code snippet (max 500 chars)
+- [ ] Project file structure overview included
+- [ ] File paths are project-relative (never absolute with usernames)
 
-## D. Capability Boundary
-- [ ] What the project CAN do (current capabilities)
-- [ ] What the project CANNOT do (current limitations)
-- [ ] Dependency constraints (external APIs, platforms, toolchain limits)
+## D. Errors and Fixes (P1, ~600 tokens)
+- [ ] Recent 5-10 errors recorded (not all)
+- [ ] Each error: description + root cause + fix solution
 
-## E. Code Changes
-- [ ] Which files were modified in this session
-- [ ] Why each modification was made
-- [ ] Current code state (committed / uncommitted)
+## E. Problem Solving (P2, ~300 tokens)
+- [ ] Completed achievements summarized
+- [ ] Key decisions documented (chosen vs rejected + reason)
 
-## F. Platform Status
-- [ ] GitHub repository file count, Release status
-- [ ] ClawHub version, Security status (if applicable)
-- [ ] Other platforms (npm, PyPI, Docker Hub, etc.)
+## F. All User Messages (P0, ~800 tokens)
+- [ ] All user messages preserved as original text
+- [ ] Messages >500 chars truncated with "..."
 
-## G. Environment Variables
-- [ ] Which env var names are configured (yes/no status only)
-- [ ] Which need user configuration
-- [ ] Token types and required permissions
-- [ ] No env var values recorded anywhere in the document
+## G. Conversation Language (P3, ~10 tokens)
+- [ ] Primary conversation language detected and recorded
 
-## H. Knowledge File Index
-- [ ] Indexed by scenario (not by filename)
-- [ ] Priority annotated (Must-read / On-demand)
-- [ ] Full index file location
-
-## I. User Preferences
-- [ ] Communication language
-- [ ] Work style
-- [ ] Code style
-- [ ] Security sensitivity level
-
-## J. Branchable Directions
-- [ ] Each direction lists files involved
-- [ ] Prerequisites for each direction
-- [ ] Complexity estimate (Low / Medium / High)
-- [ ] Direction type tagged (Research / Engineering / Ops)
-
-## K. Pending Items
-- [ ] Unfinished tasks
-- [ ] Known issues
-- [ ] Improvement ideas
-
-## L. Startup Prompt
-- [ ] Three-step flow: Load → Report → Ask
-- [ ] Adapted for target IDE platform
-- [ ] Role set: "continuation of existing project, not starting from scratch"
-- [ ] Project-relative file paths included (never absolute paths with usernames)
+## H. Current Work (P0, ~600 tokens)
+- [ ] Active task described (what is being worked on right now)
+- [ ] Unfinished Todos listed with status and files involved
+- [ ] Branchable directions listed with type, files, prerequisites, complexity
 
 ---
 
-## M. IDE-Specific Checks (fill based on target IDE)
+## Supplementary: Project Context
+
+### I. Project Identity
+- [ ] Project name, description, platforms, version, tech stack, license
+- [ ] Project directory is relative path (never absolute)
+
+### J. Platform Status
+- [ ] GitHub repo + release status
+- [ ] ClawHub version + security status (if applicable)
+
+### K. Environment Variables
+- [ ] Env var names listed (yes/no status only)
+- [ ] Which need user configuration
+- [ ] Token types and required permissions
+- [ ] No env var values recorded anywhere
+
+### L. Capability Boundary
+- [ ] What the project CAN do
+- [ ] What the project CANNOT do
+- [ ] Dependency constraints
+
+### M. Knowledge File Index
+- [ ] Indexed by scenario (not by filename)
+- [ ] Priority annotated (Must-read / On-demand)
+
+### N. User Preferences
+- [ ] Language, work style, code style, security sensitivity
+
+---
+
+## O. Startup Prompt
+- [ ] Three-step flow: Load -> Report -> Ask
+- [ ] Adapted for target IDE platform
+- [ ] Role set: "continuation of existing project, not starting from scratch"
+- [ ] Project-relative file paths (never absolute with usernames)
+- [ ] For TRAE SOLO: includes memory system read instructions (4 layers)
+
+---
+
+## P. IDE-Specific Checks (fill based on target IDE)
+
+### For TRAE SOLO
+- [ ] Memory system reference included (user_profile, project_memory, recent topics)
+- [ ] `.trae/rules/` indexed
+- [ ] Schedule tasks listed
+- [ ] Handoff saved to `docs/session-handoff.md`
 
 ### For WorkBuddy
 - [ ] Identity files indexed (SOUL.md, IDENTITY.md, USER.md)
 - [ ] Memory system indexed (MEMORY.md, daily logs)
 - [ ] Installed skills listed
 - [ ] Scheduled tasks (automations) listed with status
-- [ ] Channel configuration (IMA, Feishu) documented
 - [ ] MCP connector status documented
-- [ ] Handoff saved to `.workbuddy/session-handoff.md` (not `docs/`)
-
-### For TRAE SOLO
-- [ ] `.trae/rules/` indexed
-- [ ] Schedule tasks listed
-- [ ] Handoff saved to `docs/session-handoff.md`
+- [ ] Handoff saved to `.workbuddy/session-handoff.md`
 
 ### For Cursor
 - [ ] `.cursor/rules/` or `.cursorrules` indexed
@@ -113,3 +119,12 @@ Before finalizing the handoff, scan and remove:
 - [ ] No project-specific secrets or API keys
 - [ ] No personal preferences that are project-specific (keep generic patterns)
 - [ ] IDE-specific file scanning was performed with explicit user consent
+
+---
+
+## Token Budget Verification
+
+- [ ] Total handoff doc is approximately 4000 tokens (8 core sections)
+- [ ] P0 sections (All User Messages + Current Work) have the most detail
+- [ ] P3 sections (Conversation Language) are minimal
+- [ ] Supplementary sections are NOT counted toward the 4000-token budget

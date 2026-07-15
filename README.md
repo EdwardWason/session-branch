@@ -1,6 +1,6 @@
 # Session Branch — 支线任务
 
-[![版本](https://img.shields.io/badge/版本-1.2.0-blue)](https://github.com/EdwardWason/session-branch)
+[![版本](https://img.shields.io/badge/版本-1.3.0-blue)](https://github.com/EdwardWason/session-branch)
 [![许可证](https://img.shields.io/badge/许可证-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-session--branch-orange)](https://clawhub.ai/skills/session-branch)
 
@@ -77,7 +77,7 @@ MIT-0
 
 # Session Branch
 
-[![version](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/EdwardWason/session-branch)
+[![version](https://img.shields.io/badge/version-1.3.0-blue)](https://github.com/EdwardWason/session-branch)
 [![License](https://img.shields.io/badge/license-MIT--0-green)](LICENSE)
 [![ClawHub](https://img.shields.io/badge/ClawHub-session--branch-orange)](https://clawhub.ai/skills/session-branch)
 

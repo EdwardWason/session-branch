@@ -2,6 +2,23 @@
 
 All notable changes to session-branch will be documented in this file.
 
+## [1.3.0] - 2026-06-12
+
+### Added
+- Trae IDE session-copy architecture fusion: 8-section fixed structure with token budget management (~4000 tokens)
+- Compression strategy with P0-P3 priority levels (P0: user messages + current work; P3: conversation language)
+- TRAE memory system integration: 3-layer memory reference (user profile, project memory, recent topics)
+- New reference file: `references/memory-guide.md` — TRAE memory system path structure + quick lookup guide
+- TRAE SOLO startup prompt enhanced: 4-layer context loading (handoff doc + rules + memory system + session_memory grep)
+- All IDE startup prompts now include "unfinished Todos" reporting in Step 2
+- Checklist updated with token budget verification section
+
+### Changed
+- handoff-template.md: restructured from 13 dimensions to 8 core sections + supplementary context
+- checklist.md: restructured from 13 categories (A-M) to 8 core (A-H) + supplementary (I-N) + IDE-specific (O-P)
+- Step 1 scanning list aligned with 8-section structure
+- SKILL.md: new Step 1.5 (Apply Compression Strategy) added between scanning and document generation
+
 ## [1.2.0] - 2026-06-12
 
 ### Security
